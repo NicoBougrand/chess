@@ -1,0 +1,17 @@
+extends error
+
+block error-vars
+    - code = 500;
+    - message = "Internal Server Error";
+
+block error-content
+    .jumbotron.card.container.grid.container-fluid.d-flex.flex-column.justify-content-center
+        div
+            b
+                | #{error.message} :
+        div.internal-error-stack
+            each error2 in error.stack.split("at ")
+                p
+                |at #{error2}
+
+

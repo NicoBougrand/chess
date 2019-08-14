@@ -1,0 +1,19 @@
+header {
+	.navbar {
+		background: black;
+		padding: 0;
+		margin-bottom: 0px;
+		height: 5.6rem;
+		top: 0;
+		#nav-logo {
+			img {
+				height: 5rem;
+			}
+			margin-left: 2rem;
+		}
+		#nav-app-title {
+			font-size: 2rem;
+			color: $brand-color;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+extends ../../layout
+block append commonVariables
+    - app = "Error";
+
+block body
+    block error-vars
+        - var code = 400;
+        - var message = "";
+        - var error = {}
+    #error-page
+        h1
+            | #{code} #{message}
+        
+        block error-content
+            .jumbotron.card.container.grid.container-fluid.d-flex.flex-column.justify-content-center
+                | #{error}

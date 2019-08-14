@@ -1,0 +1,21 @@
+doctype html
+
+include ./templates/commonVariables
+
+html
+    head
+        include ./templates/head
+    
+    body
+        header
+            include ./templates/header
+
+        div.jumbotron.jumbotron-fluid.bg-white
+            .grid.container-fluid.d-flex.flex-column
+                block body
+
+        footer
+            include ./templates/footer
+        
+        include ./templates/includes
+            

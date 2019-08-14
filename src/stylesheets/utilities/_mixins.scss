@@ -1,0 +1,92 @@
+@mixin on-event($self: false) {
+	@if $self {
+		&,
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	} @else {
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	}
+}
+
+@mixin when-inside($context) {
+	#{$context} & {
+		@content;
+	}
+}
+
+@mixin font-awesome($unicode, $color, $opacity) {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	content: $unicode;
+	color: $color;
+	opacity: $opacity;
+}
+
+@mixin radial-gradient($shape, $order, $background-img, $colors...) {
+	$length: length($colors);
+	background: $background-img, nth($colors, 1);
+	@if ($length > 1) {
+		$percent: 100/ ($length - 1);
+
+		$list: ();
+		@for $i from 0 through $length - 1 {
+			$color: nth($colors, if($order== 'normal', $i + 1, $length - $i));
+			$list: append($list, $color);
+			$list: append($list, $percent * $i#{'%' + if($i != $length - 1, ',', '')});
+		}
+
+		background: $background-img, -moz-radial-gradient($shape, $list);
+		background: $background-img, -webkit-radial-gradient($shape, $list);
+		background: $background-img, radial-gradient($shape, $list);
+	}
+}
+
+@mixin target-fade($color, $time) {
+	-webkit-animation: target-fade $time;
+	-moz-animation: target-fade $time;
+	-o-animation: target-fade $time;
+	animation: target-fade $time;
+
+	@-webkit-keyframes target-fade {
+		from {
+			background-color: $color;
+		}
+		to {
+			background-color: transparent;
+		}
+	}
+
+	@-moz-keyframes target-fade {
+		from {
+			background-color: $color;
+		}
+		to {
+			background-color: transparent;
+		}
+	}
+
+	@-o-keyframes target-fade {
+		from {
+			background-color: $color;
+		}
+		to {
+			background-color: transparent;
+		}
+	}
+
+	@keyframes target-fade {
+		from {
+			background-color: $color;
+		}
+		to {
+			background-color: transparent;
+		}
+	}
+}

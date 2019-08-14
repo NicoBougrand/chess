@@ -1,0 +1,11 @@
+body {
+	height: 100%;
+	.jumbotron {
+		min-height: 80%;
+		padding-bottom: 0;
+		padding-top: 10rem;
+		.container-fluid {
+			padding: 0 5rem;
+		}
+	}
+}

@@ -1,0 +1,17 @@
+block commonVariables
+    - var app = undefined;
+    - var appName = fromServer.appName;
+    - var routePrefix = fromServer.routePrefix;
+
+    - function fileName(fullFilePath, ext=true){
+    -   const filenameWithExt = fullFilePath.substring(fullFilePath.lastIndexOf('/') + 1).split('.');
+    -   return filenameWithExt[0] + (ext ? "." + filenameWithExt[1] : "");
+    - };
+
+    - function capitalize(str){
+    -   return str.charAt(0).toUpperCase() + str.slice(1);
+    - };
+
+
+block append extrascript
+    script.

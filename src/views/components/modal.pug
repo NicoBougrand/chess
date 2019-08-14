@@ -1,0 +1,39 @@
+#modal.modal.fade.hide(role="dialog", aria-labelledby="modal", aria-hidden="true")
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header
+                h5#modal-title.modal-title
+                    | Modal title
+                button(type="button", class="close", data-dismiss="modal", aria-label="Close")
+                    span(aria-hidden="true")
+                        |&times;
+            #modal-body.modal-body
+                | Modal Body
+            .modal-footer
+                button#modal-submit-title.btn.btn-primary.submit(type="button")
+                    | Modal Submit Title
+                button.btn.btn-secondary(type="button", data-dismiss="modal")
+                    | Close
+
+block append extrascript
+    script.
+        function createModal(modalId, modalTitle, modalBody, modalSubmitTitle){
+            const modal =  $('#modal').clone();
+            modal.on('hidden.bs.modal', function () {
+                modal.remove();
+            });
+
+            modal.on('shown.bs.modal', function () {
+                const autofocusInput = modal.find(".config-input:not([readonly])")[0];
+                if (autofocusInput){
+                    autofocusInput.focus();
+                    autofocusInput.setSelectionRange(autofocusInput.value.length, autofocusInput.value.length);
+                }
+            });
+
+            modal.attr("id", modalId);
+            modal.find("#modal-title").html(modalTitle);
+            modal.find("#modal-body" ).html(modalBody);
+            modal.find("#modal-submit-title" ).html(modalSubmitTitle);
+            return modal;
+        }
