@@ -10,10 +10,16 @@ $code-font-stack: 'Roboto', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera S
 /// @type Color
 $text-color: rgb(34, 34, 34) !default;
 
+/// Container's maximum width
+/// @type Length
+$max-width: 1180px !default;
+
 /// Main brand color
 /// @type Color
 $brand-color: white !default;
 
-/// Container's maximum width
-/// @type Length
-$max-width: 1180px !default;
+/// Main colors
+/// @type Color
+$light-color: burlywood;
+/// @type Color
+$dark-color: saddlebrown;

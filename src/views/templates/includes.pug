@@ -1,17 +1,10 @@
 script(src=routePrefix + "/public/js/jquery/jquery-3.4.1.min.js")
 script(src=routePrefix + "/public/js/popper/popper.min.js")
 script(src=routePrefix + "/public/js/bootstrap/bootstrap.4.1.3.min.js")
-script(src=routePrefix + "/public/js/datatables/datatables.1.10.18.min.js")
-script(src=routePrefix + "/public/js/dropzone/dropzone.js")
 
 script(src=routePrefix + "/public/js/application/utils.js")
 
 script.
     removeUrlParameter("token");
-
-    // prevent re-load or close during file upload
-    $(window).bind('beforeunload',  function() {
-        return hasUploadInProgress() ? "Do you really want to leave or reload the page?\nAll the current upload will be canceled." : undefined;
-    });
-
+        
 block extrascript

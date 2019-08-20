@@ -7,6 +7,6 @@
 // 4. Layout-related sections
 @import 'layout/header', 'layout/body', 'layout/footer';
 // 5. Components
-@import 'components/modal';
+@import 'components/modal', 'components/chess/chessboard';
 // 6. Page-specific styles
-@import 'pages/error';
+@import 'pages/error', 'pages/chess';

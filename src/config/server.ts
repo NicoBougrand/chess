@@ -14,6 +14,7 @@ import AbstractError from "../model/commonTypes/errors/abstract.error";
 import ChessController from "../controllers/chess.controller";
 import AbstractController from "../controllers/controller.abstract";
 import MainController from "../controllers/main.controller";
+import Position from "../model/chess/move/position";
 
 export default class Server {
     public static get(): Server {
@@ -69,7 +70,7 @@ export default class Server {
                 if (this.healthy) {
                     res.status(200).send("healthy");
                 } else {
-                    res.status(503).render("pages/error/default.pug", { errorCode: 503, errorMessage: "Service Unavailable" });
+                    res.status(503).render("pages/error/default.pug", {errorCode: 503, errorMessage: "Service Unavailable"});
                 }
             }).get(`${routePrefix}/alive`, (req, res) => {
                 res.status(200).send("alive");
@@ -90,7 +91,7 @@ export default class Server {
                 } else {
                     Log.error(error);
                 }
-                res.status(500).render("pages/error/500.pug", { error });
+                res.status(500).render("pages/error/500.pug", {error});
             });
     }
 }

@@ -7,6 +7,10 @@ export default class Counter {
         this.count = initCount || 0;
     }
 
+    public get(): number {
+        return this.count;
+    }
+
     public increment(increment?: number): void {
         increment = increment || 1;
         this.count += increment;

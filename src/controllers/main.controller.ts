@@ -27,19 +27,19 @@ export default class MainController extends AbstractController {
      */
     private static game1() {
         Log.info("Game 1");
-        const chessBoard: ChessBoard = ChessBoard.init(
+        const chessBoard: ChessBoard = ChessBoard.init("0",
             new PieceConfiguration(new Pawn(Color.BLACK, NNumber.ONE),
                 new Position(ColumnEnum.D, LineEnum.SEVEN)),
             new PieceConfiguration(new Knight(Color.WHITE, NNumber.TWO),
                 new Position(ColumnEnum.D, LineEnum.TWO)),
             new PieceConfiguration(new Rook(Color.WHITE, NNumber.ONE),
                 new Position(ColumnEnum.D, LineEnum.FIVE)));
-        ChessBoard.potentialMoves(chessBoard);
+        chessBoard.potentialMoves();
     }
 
     private static game2() {
         Log.info("Game 2");
-        const chessBoard: ChessBoard = ChessBoard.init(
+        const chessBoard: ChessBoard = ChessBoard.init("1",
             /* WHITE */
             new PieceConfiguration(new Rook(Color.WHITE, NNumber.ONE),
                 new Position(ColumnEnum.A, LineEnum.ONE)),
@@ -106,7 +106,7 @@ export default class MainController extends AbstractController {
                 new Position(ColumnEnum.G, LineEnum.SEVEN)),
             new PieceConfiguration(new Pawn(Color.BLACK, NNumber.EIGHT),
                 new Position(ColumnEnum.H, LineEnum.SEVEN)));
-        ChessBoard.potentialMoves(chessBoard);
+        chessBoard.potentialMoves();
     }
 
     /**
@@ -114,7 +114,7 @@ export default class MainController extends AbstractController {
      */
     private static game3() {
         Log.info("Game 3");
-        const chessBoard: ChessBoard = ChessBoard.init(
+        const chessBoard: ChessBoard = ChessBoard.init("2",
             new PieceConfiguration(new Pawn(Color.BLACK, NNumber.ONE),
                 new Position(ColumnEnum.D, LineEnum.SEVEN)),
             new PieceConfiguration(new Pawn(Color.BLACK, NNumber.TWO),
@@ -133,7 +133,7 @@ export default class MainController extends AbstractController {
                 new Position(ColumnEnum.C, LineEnum.FIVE)),
             new PieceConfiguration(new King(Color.BLACK),
                 new Position(ColumnEnum.G, LineEnum.SIX)));
-        ChessBoard.potentialMoves(chessBoard);
+        chessBoard.potentialMoves();
     }
 
     public constructor() {

@@ -1,4 +1,5 @@
 import Log from "../../../utils/logs/log.utils";
+import EError from "../../commonTypes/errors/error";
 
 import { Color } from "./color";
 import { NNumber } from "./number";
@@ -22,7 +23,7 @@ export default abstract class Piece {
      * Instantiates a new chess piece.
      *
      * @param color the color
-     * @param number the number
+     * @param nnumber the number
      */
     public constructor(color: Color, nnumber: NNumber) {
         this.color = color;
@@ -87,5 +88,13 @@ export default abstract class Piece {
      */
     public getFullName(): string {
         return Log.format("%s %s %s", this.getColor(), this.getName(), this.getNumber());
+    }
+
+    public toJSON() {
+        return {
+            color: this.getColor(),
+            number: this.getNumber(),
+            name: this.getName()
+        };
     }
 }

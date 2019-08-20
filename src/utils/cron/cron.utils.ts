@@ -5,7 +5,7 @@ import Log from "../logs/log.utils";
 export default class CronUtils {
     public static every5seconds: string = "*/5 * * * * *";
     public static launchAll(): void {
-        CronUtils.example();
+        // CronUtils.example();
     }
 
     public static example(cronTime?: string | Date): void {

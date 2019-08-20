@@ -3,17 +3,21 @@ header {
 		background: black;
 		padding: 0;
 		margin-bottom: 0px;
-		height: 5.6rem;
+		height: 4rem;
 		top: 0;
 		#nav-logo {
-			img {
-				height: 5rem;
+			i {
+				-webkit-text-fill-color: $light-color;
+				-webkit-text-stroke-width: 0.05rem;
+				-webkit-text-stroke-color: $dark-color;
 			}
 			margin-left: 2rem;
 		}
 		#nav-app-title {
 			font-size: 2rem;
-			color: $brand-color;
+			-webkit-text-fill-color: $light-color;
+			-webkit-text-stroke-width: 0.05rem;
+			-webkit-text-stroke-color: $dark-color;
 		}
 	}
 }

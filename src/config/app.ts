@@ -8,6 +8,8 @@ import path from "path";
 import ServerToClient from "../middlewares/serverToClient";
 import Config from "./config";
 
+import Position from "../model/chess/move/position";
+
 export default class App {
     public app: express.Application;
     public config: Config;
@@ -25,7 +27,7 @@ export default class App {
         this.app
             .use(compression())
             // Parse URL-encoded bodies (as sent by HTML forms)
-            .use(express.urlencoded({ extended: true }))
+            .use(express.urlencoded({extended: true}))
             // Parse JSON bodies (as sent by API clients)
             .use(express.json())
             .use(cookieParser(this.config.getSecretKey(), {}))
@@ -37,10 +39,12 @@ export default class App {
                 sourceMap: true,
                 prefix: `${this.config.getPublicPrefix()}/css`,
             }))
-            .use(ServerToClient.set({
-                appName: this.config.getAppName(),
-                routePrefix: this.config.getRoutePrefix()
-            }))
+            .use(ServerToClient.set(
+                {
+                    chessUtils: {toPosition: Position.new},
+                    appName: this.config.getAppName(),
+                    routePrefix: this.config.getRoutePrefix()
+                }))
             .use(this.config.getPublicPrefix(), express.static(this.config.getPublicDir())); // Indique que le dossier /public contient des fichiers statiques (middleware chargé de base)
     }
 

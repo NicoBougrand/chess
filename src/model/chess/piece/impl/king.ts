@@ -16,7 +16,6 @@ export default class King extends Piece {
      * Instantiates a new queen.
      *
      * @param color the color
-     * @param number the number
      */
     public constructor(color: Color) {
         super(color, NNumber.NONE);

@@ -95,7 +95,7 @@ export default class Pawn extends Piece {
      * @return true, if is first move
      */
     private _isFirstMove(board: ChessBoard): boolean {
-        const currentPos: Position = ChessBoard.getPosition(board, this);
+        const currentPos: Position = board.getPosition(this);
         const line: LineEnum = currentPos.getLine();
         if (Color.BLACK === this.getColor()) {
             return (LineEnum.SEVEN === line);

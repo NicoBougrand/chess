@@ -1,0 +1,24 @@
+extends ../layout
+
+block body
+    .chessgame-actions
+        a#new-game.chessgame-action.btn.btn-primary(href=routePrefix + "/new")
+            | New Game
+        a#load-game.chessgame-action.btn.btn-primary(href=routePrefix + "/load/") <!-- Add id-->
+            | Load Game
+        button#save-game.chessgame-action.btn.btn-primary(action=routePrefix + "/save")
+            | Save Game
+    include ../components/chess/chessboard
+
+block append extrascript
+    script.
+
+        //- $("#save-game").on("click", function(){
+        //-     url =  $(this).attr("action");
+        //-     $.ajax({
+        //-             type: 'POST',
+        //-             url: url,
+        //-             data: {id : chessId},
+        //-             dataType: "html",
+        //-         });
+        //- });

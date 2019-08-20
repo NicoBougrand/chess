@@ -1,0 +1,28 @@
+//- script!= "(function() {localStorage.setItem('chessboard',JSON.stringify(" +chessBoard + ");})();"
+
+.chess
+    table#chessboard.chessboard
+        tr.columnnames
+            td.columnname
+            td.columnname A
+            td.columnname B
+            td.columnname C
+            td.columnname D
+            td.columnname E
+            td.columnname F
+            td.columnname G
+            td.columnname H
+        - for(let line = 1; line <= 8; line++)
+            tr
+                td.linename #{line}
+                - for(let column = 1; column <= 8; column++)
+                    - var boxClasses = "line-" + line;
+                    - boxClasses += " column-" + column;
+                    - boxClasses += (column % 2) === (line %2) ? " black" : " white"
+                    td.chessbox(class=boxClasses)
+                        if (chessBoard) 
+                            - var piece = chessBoard.getPiece(chessUtils.toPosition(column, line));
+                            if (piece)
+                                - var iconClasses = "fas fa-chess-" + piece.getName().toLowerCase();
+                                - iconClasses += " piece-" + piece.getColor();
+                                i(class=iconClasses)

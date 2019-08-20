@@ -25,7 +25,7 @@ export default class MoveUtil {
     public static recursiveMove(board: ChessBoard, piece: Piece, nextSteps: Step[]): Move[] {
         return _.flatMap(
             _(nextSteps)
-                .map((step: Step) => this._recursiveMove(board, piece.getColor(), ChessBoard.getPosition(board, piece), step))
+                .map((step: Step) => this._recursiveMove(board, piece.getColor(), board.getPosition(piece), step))
                 .value()
         );
     }
@@ -42,7 +42,7 @@ export default class MoveUtil {
     public static move(board: ChessBoard, piece: Piece, nextSteps: Step[]) {
         return _.flatMap(
             _(nextSteps)
-                .map((step: Step) => this._move(board, piece.getColor(), ChessBoard.getPosition(board, piece), step))
+                .map((step: Step) => this._move(board, piece.getColor(), board.getPosition(piece), step))
                 .value()
         );
     }

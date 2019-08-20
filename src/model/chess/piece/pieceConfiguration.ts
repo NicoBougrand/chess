@@ -1,10 +1,38 @@
+import EError from "../../commonTypes/errors/error";
+
 import Position from "../move/position";
+
+import Bishop from "./impl/bishop";
+import King from "./impl/king";
+import Knight from "./impl/knight";
+import Pawn from "./impl/pawn";
+import Queen from "./impl/queen";
+import Rook from "./impl/rook";
 import Piece from "./piece";
 
 /**
  * The Class PieceConfiguration.
  */
 export default class PieceConfiguration {
+
+    public static getPiecePrototype(pieceName: string) {
+        switch (pieceName) {
+            case "Bishop":
+                return Bishop.prototype;
+            case "King":
+                return King.prototype;
+            case "Knight":
+                return Knight.prototype;
+            case "Pawn":
+                return Pawn.prototype;
+            case "Queen":
+                return Queen.prototype;
+            case "Rook":
+                return Rook.prototype;
+            default:
+                throw new EError(undefined, "Piece %s not defined", pieceName);
+        }
+    }
 
     /** The piece. */
     private piece: Piece;

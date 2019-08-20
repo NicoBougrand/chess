@@ -1,3 +1,4 @@
+import { types } from "node-sass";
 import Log from "../../../utils/logs/log.utils";
 
 /**
@@ -6,21 +7,21 @@ import Log from "../../../utils/logs/log.utils";
 enum ColumnEnum {
 
     /** The a. */
-    A,
+    A = 1,
     /** The b. */
-    B,
+    B = 2,
     /** The c. */
-    C,
+    C = 3,
     /** The d. */
-    D,
+    D = 4,
     /** The e. */
-    E,
+    E = 5,
     /** The f. */
-    F,
+    F = 6,
     /** The g. */
-    G,
+    G = 7,
     /** The h. */
-    H
+    H = 8
 }
 
 /**
@@ -50,6 +51,18 @@ enum LineEnum {
  * The position of a piece.
  */
 export default class Position {
+    public static fromKey(key: string): Position {
+        if (key && key.match("^[A-H][1-8]$")) {
+            return Position.new(ColumnEnum[key.substring(0, 1) as keyof typeof ColumnEnum], LineEnum[key.substring(1) as keyof typeof LineEnum]);
+        } else {
+            return undefined;
+        }
+    }
+
+    public static new(column: number, line: number): Position {
+        return new Position(ColumnEnum[ColumnEnum[column] as keyof typeof ColumnEnum], LineEnum[LineEnum[line] as keyof typeof LineEnum]);
+    }
+
     public static up(current: Position): Position {
         let line: LineEnum;
         if (current) {
@@ -238,14 +251,9 @@ export default class Position {
     public setLine(line: LineEnum): void {
         this.line = line;
     }
-    public equals(other: Position): boolean {
-        if (this.column !== other.column) {
-            return false;
-        }
-        if (this.line !== other.line) {
-            return false;
-        }
-        return true;
+
+    public asKey(): string {
+        return this.toString();
     }
 
     /**

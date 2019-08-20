@@ -1,0 +1,16 @@
+.chessgame-actions {
+	margin-top: 1rem;
+	.chessgame-action {
+		margin-right: 1rem;
+		background-color: white;
+		border-color: $dark-color;
+		font-weight: bold;
+		color: $light-color;
+		a {
+			@include on-event {
+				color: white;
+				text-decoration: node;
+			}
+		}
+	}
+}
